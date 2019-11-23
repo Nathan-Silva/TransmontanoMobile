@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">TransmontanoMobile</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_alarme">Alarme</string>
+    <string name="title_carteirinha">Carteirinha</string>
+    <string name="title_fale_conosco">Fale Conosco</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="txtPerfil">Matricula: 627332.00</string>
+
 </resources>
