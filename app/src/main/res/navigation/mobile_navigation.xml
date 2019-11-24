@@ -29,5 +29,10 @@
         android:label="@string/title_fale_conosco"
         tools:layout="@layout/fragment_fale_conosco" />
 
+    <fragment
+        android:id="@+id/navigation_centrosmedicos"
+        android:name="com.transmontanomobile.transmontanomobile.ui.centros_medicos.CentrosMedicosFragment"
+        android:label="@string/title_fale_conosco"
+        tools:layout="@layout/fragment_centros_medicos" />
 
 </navigation>

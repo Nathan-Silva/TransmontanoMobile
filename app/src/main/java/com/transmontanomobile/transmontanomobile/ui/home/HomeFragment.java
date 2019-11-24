@@ -1,7 +1,9 @@
 package com.transmontanomobile.transmontanomobile.ui.home;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +28,28 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
+    private HomeFragmentListener listener;
+
     private HomeViewModel homeViewModel;
     ListView lvListaHome;
+
+
+    public interface HomeFragmentListener {
+        void abrirItemDemenu(int posicao);
+    }
+
+    public void setHomeFragmentListener( HomeFragmentListener listener){
+        this.listener = listener;
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof  HomeFragmentListener){
+            listener = (HomeFragmentListener) context;
+        }else{
+            throw new RuntimeException(context.toString() + "Não deu certo a implementação");
+        }
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,18 +78,19 @@ public class HomeFragment extends Fragment {
         this.lvListaHome.setAdapter(lha);
 
         lvListaHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @SuppressLint("ResourceType")
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListHome itemLista = (ListHome) parent.getItemAtPosition(position);
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.layout.fragment_home, new CentrosMedicosFragment());
-                fragmentTransaction.commit();
-
+                listener.abrirItemDemenu(position);
+                Log.d("LOGLISTA", "Clicou no item " + position + "da lista");
 
             }
         });
         return root;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 }
