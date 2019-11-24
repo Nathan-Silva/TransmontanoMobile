@@ -1,7 +1,7 @@
 package com.transmontanomobile.transmontanomobile.services;
 
 
-import com.transmontanomobile.transmontanomobile.adapters.Endereco;
+import com.transmontanomobile.transmontanomobile.model.Endereco;
 
 import java.util.List;
 

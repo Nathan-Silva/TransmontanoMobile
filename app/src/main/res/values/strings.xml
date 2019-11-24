@@ -10,4 +10,22 @@
 
     <string name="txtPerfil">Matricula: 627332.00</string>
 
+    <!-- base -->
+    <string name="txtBemVIndo">Bem Vindo.</string>
+    <string name="txtCodigo">Codigo:</string>
+    <string name="txtLocalidade">Localidade:</string>
+    <string name="txtExemploCod">Exemple: 1</string>
+    <string name="txtExemploLoc">Exemple: Praça da Sé</string>
+    <string name="txtEndereco">Endereco:</string>
+    <string name="txtEcemploEnd">Exemple: Av. Paulista</string>
+    <string name="txtAtendimento">Horario de atendimento:</string>
+    <string name="txtExemploAtend">Exemple: XX Às XX</string>
+
+    <!-- Itens -->
+    <string name="nome">Nome</string>
+    <string name="endereco">Endereço</string>
+    <string name="atendimento">Segunda a sexta</string>
+    <string name="horario">Horario</string>
+    <string name="comoChegar">Como chegar</string>
+
 </resources>

@@ -3,11 +3,15 @@ package com.transmontanomobile.transmontanomobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.transmontanomobile.transmontanomobile.adapters.Endereco;
+import com.transmontanomobile.transmontanomobile.model.Endereco;
 import com.transmontanomobile.transmontanomobile.adapters.ListaEnderecoAdapter;
 import com.transmontanomobile.transmontanomobile.services.IRetrofitEndereco;
 
@@ -17,6 +21,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class CentrosMedicosActivity extends AppCompatActivity {
 
@@ -43,8 +49,7 @@ public class CentrosMedicosActivity extends AppCompatActivity {
             public void onResponse(Call<List<Endereco>> call, Response<List<Endereco>> response) {
                 if (dialog.isShowing()) {
                     dialog.dismiss();
-
-                    List<Endereco> dto = response.body();
+                    final List<Endereco> dto = response.body();
                     Log.d("CHAMADAAPI", dto.toString());
                     Log.d("CHAMADAAPI", "Chamada bem sucedida!");
                     for (Endereco local : dto) {
@@ -75,19 +80,22 @@ public class CentrosMedicosActivity extends AppCompatActivity {
                             imgFoto = R.drawable.santos;
                         }
 
-                        Log.d("TESTECHAMADAAPI", "Codigo Teste = " + cogigo);
-                        Log.d("TESTECHAMADAAPI", "Localidade Teste = " + localidade);
-                        Log.d("TESTECHAMADAAPI", "Endereco Teste = " + endereco);
-                        Log.d("TESTECHAMADAAPI", "HoraInicial Teste = " + horaInicial);
-                        Log.d("TESTECHAMADAAPI", "Icone Teste = " );
-                        Log.d("TESTECHAMADAAPI", "HoraFInal Teste = " + horaFinal);
-                        Log.d("TESTECHAMADAAPI", "Foto Teste = " + imgFoto);
-
                         Endereco loc = new Endereco(cogigo, localidade, endereco, horaInicial, horaFinal, imgFoto);
                         enderecosAdapter.add(loc);
                     }
                     ListaEnderecoAdapter lea = new ListaEnderecoAdapter(CentrosMedicosActivity.this, enderecosAdapter);
                     lvListaEndereco.setAdapter(lea);
+
+
+                lvListaEndereco.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Log.d("TESTEBOTÃOLISTA", "Clicou no botão na posição = " + position);
+                        Intent it = new Intent(CentrosMedicosActivity.this, ExibeCentrosMedicosActivity.class);
+                        it.putExtra("ID", dto.get(position).getCodigo());
+                        startActivity(it);
+                    }
+                });
                 }
             }
 
@@ -95,6 +103,11 @@ public class CentrosMedicosActivity extends AppCompatActivity {
             public void onFailure(Call<List<Endereco>> call, Throwable t) {
                 Log.d("CHAMADAAPI", "Chamada mal sucedida");
                 Log.d("CHAMADAAPI", t.toString());
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                    Toast toast = Toast.makeText(CentrosMedicosActivity.this, "Erro na rquisição. Por favor, tente novamente mais tarde", LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }

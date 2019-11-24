@@ -1,4 +1,4 @@
-package com.transmontanomobile.transmontanomobile.adapters;
+package com.transmontanomobile.transmontanomobile.model;
 
 public class Endereco {
 

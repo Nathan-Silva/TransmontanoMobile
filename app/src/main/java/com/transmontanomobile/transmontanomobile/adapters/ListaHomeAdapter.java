@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 
 import com.transmontanomobile.transmontanomobile.R;
+import com.transmontanomobile.transmontanomobile.model.ListHome;
 
 import java.util.ArrayList;
 

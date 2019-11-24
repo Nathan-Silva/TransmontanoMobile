@@ -22,29 +22,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:paddingTop="10dp"
-                android:text="Nome"
+                android:text="@string/nome"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/txtEndereco"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="Endereço"
+                android:text="@string/endereco"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/txtSemana"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="Segunda a sexta"
+                android:text="@string/atendimento"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/txtHora"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="Horario"
+                android:text="@string/horario"
                 android:textAlignment="center" />
 
 
@@ -67,10 +69,11 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnComoChegar"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="21dp"
-                    android:text="Como chagar"
+                    android:text="@string/comoChegar"
                     android:padding="2dp"
                     android:background="@color/colorWhite"/>
 
